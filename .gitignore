@@ -1,0 +1,10 @@
+# Node modules (for Node.js)
+node_modules/
+
+# Env / secrets (for Supabase)
+.Env
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
