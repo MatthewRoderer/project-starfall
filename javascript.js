@@ -37,12 +37,19 @@ if (signupBtn && loginBtn && logoutBtn) {
     }
 
     authStatus.textContent = "Signing up...";
-    const { error } = await signUpWithEmail(email, password);
 
-    if (error) {
-      authStatus.textContent = `Signup failed: ${error.message}`;
-    } else {
-      authStatus.textContent = "Signup successful. Check your email if confirmation is required.";
+    try {
+      const result = await signUpWithEmail(email, password);
+
+      if (result && result.error) {
+        authStatus.textContent = `Signup failed: ${result.error.message}`;
+      } else {
+        authStatus.textContent =
+          "Signup successful. Check your email if confirmation is required.";
+      }
+    } catch (err) {
+      console.error("Unexpected signup error:", err);
+      authStatus.textContent = `Unexpected signup error: ${err.message}`;
     }
   });
 
@@ -56,18 +63,29 @@ if (signupBtn && loginBtn && logoutBtn) {
     }
 
     authStatus.textContent = "Logging in...";
-    const { error } = await signInWithEmail(email, password);
 
-    if (error) {
-      authStatus.textContent = `Login failed: ${error.message}`;
-    } else {
-      authStatus.textContent = "Logged in!";
+    try {
+      const result = await signInWithEmail(email, password);
+
+      if (result && result.error) {
+        authStatus.textContent = `Login failed: ${result.error.message}`;
+      } else {
+        authStatus.textContent = "Logged in!";
+      }
+    } catch (err) {
+      console.error("Unexpected login error:", err);
+      authStatus.textContent = `Unexpected login error: ${err.message}`;
     }
   });
 
   logoutBtn.addEventListener("click", async () => {
     authStatus.textContent = "Logging out...";
-    await signOut();
-    authStatus.textContent = "Logged out.";
+    try {
+      await signOut();
+      authStatus.textContent = "Logged out.";
+    } catch (err) {
+      console.error("Unexpected logout error:", err);
+      authStatus.textContent = `Unexpected logout error: ${err.message}`;
+    }
   });
 }
