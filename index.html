@@ -1,61 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Starfall Wiki</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-    <head>
-        <meta charset="UTF-8"> <!-- Different Browser Friendly -->
-        <meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Mobile friendly -->
-        <title>Starfall Wiki</title>
-        <link rel="stylesheet" href="style.css"> <!-- Style will be ran off this .css file for all pages -->
-    </head>
+  <body>
+    <header>
+      <h1>⭐ Project Starfall Wiki ⭐</h1>
+      <nav>
+        <a href="#">Home</a>
+        <a href="#">Gods</a>
+        <a href="#">Cities</a>
+        <a href="#">Races</a>
+        <a href="#">Religions</a>
+      </nav>
+    </header>
 
-    <body>
-        <header>
-            <h1>⭐ Project Starfall Wiki ⭐</h1>
-            <nav>
-                <a href="#">Home</a>
-                <a href="#">Gods</a>
-            </nav>
-        </header>
+    <main>
+      <!-- Proof-of-concept flavor section -->
+      <section class="card intro">
+        <p>
+          Welcome to the world of <strong>Starfall</strong>! Explore the gods of
+          the realm!
+        </p>
+        <button id="exploreBtn">Click me to explore</button>
+        <p id="message"></p>
+      </section>
 
-        <main>
-            <!-- This section is basically just a test section for my first proof of concept -->
-            <section class="intro">
-                <p>Welcome to the world of <strong>Starfall</strong>! Explore the gods of the realm!</p>
-                <button id="exploreBtn">Click me to explore</button>
-                <p id="message"></p>
-            </section>
+      <!-- Login / signup section -->
+      <section class="card auth-panel">
+        <h2>Login / Sign Up</h2>
 
-            <!-- This section is the login section -->
-             <section class="auth-panel">
-                <h2>Login / Sign Up</h2>
+        <label>
+          Email:
+          <input type="email" id="authEmail" />
+        </label>
 
-                <label>
-                    Email:
-                    <input type="email" id="authEmail">
-                </label>
+        <label>
+          Password:
+          <input type="password" id="authPassword" />
+        </label>
 
-                <label>
-                    Password:
-                    <input type="password" id="authPassword">
-                </label>
+        <div class="auth-buttons">
+          <button id="signupBtn">Sign Up</button>
+          <button id="loginBtn">Log In</button>
+          <button id="logoutBtn">Log Out</button>
+        </div>
 
-                <div class="auth-buttons">
-                    <button id="signupBtn">Sign Up</button>
-                    <button id="loginBtn">Log In</button>
-                    <button id="logoutBtn">Log Out</button>                    
-                </div>
+        <p id="authStatus"></p>
+      </section>
 
-                <p id="authStatus"></p>
-             </section>
-        </main>
+      <!-- Articles section -->
+      <section class="card articles-panel">
+        <h2>Articles</h2>
+        <p id="articlesStatus" class="status-text"></p>
+        <div id="articlesList"></div>
 
-        <footer>
-            <p>&copy; 2025 Starfall</p>
-        </footer>
+        <div id="articleFormWrapper" class="article-form">
+          <h3>Create New Article (DM only)</h3>
 
-        <script src="https://unpkg.com/@supabase/supabase-js@2"></script> <!-- Adds Supabase client script -->
-        <script src="auth.js"></script> <!-- The authentication js file for login -->
-        <script src="javascript.js"></script> <!-- All JavaScript will be ran off this .js file -->
-    
-    </body>
+          <label>
+            Title:
+            <input type="text" id="articleTitle" />
+          </label>
+
+          <label>
+            Type:
+            <input
+              type="text"
+              id="articleType"
+              placeholder="e.g. god, city, race"
+            />
+          </label>
+
+          <label>
+            Content:
+            <textarea
+              id="articleContent"
+              rows="4"
+              placeholder="Describe the god, city, etc."
+            ></textarea>
+          </label>
+
+          <label class="checkbox-label">
+            <input type="checkbox" id="articlePublic" checked />
+            Public article (visible to everyone)
+          </label>
+
+          <button id="createArticleBtn">Create Article</button>
+          <p id="articleFormStatus" class="status-text"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Starfall</p>
+    </footer>
+
+    <!-- Supabase client -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <!-- Your auth helpers (supabaseClient, signUpWithEmail, etc.) -->
+    <script src="auth.js"></script>
+    <!-- Main app logic -->
+    <script src="javascript.js"></script>
+  </body>
 </html>

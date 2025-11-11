@@ -14,6 +14,10 @@ header {
   text-align: center;
 }
 
+header h1 {
+  margin: 0;
+}
+
 nav {
   margin-top: 0.5rem;
 }
@@ -26,57 +30,30 @@ nav a {
 }
 
 nav a:hover {
-  color: #fff;
+  color: #ffffff;
 }
 
 main {
   flex: 1;
   display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 2rem;
   justify-content: center;
   align-items: flex-start;
-  gap: 3rem;
-  padding: 2rem;
 }
 
-.intro,
-.auth-panel {
-    max-width: 400px;
-    background-color: #141830;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+.card {
+  background-color: #141830;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  max-width: 400px;
+  width: 100%;
 }
 
-.auth-panel h2 {
-    margin-top: 0;
-}
-
-.auth-panel label {
-    display: block;
-    margin-bottom: 0.75rem;
-}
-
-.auth-panel input {
-    width: 100%;
-    padding: 0.35rem;
-    margin-top: 0.25rem;
-    border-radius: 4px;
-    border: 1px solid #333;
-    background-color: #0a0c1a;
-    color: #eaeaea;
-}
-
-.auth-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-}
-
-#authStatus {
-    margin-top: 0.75rem;
-    font-size: 0.9rem;
-    color: #8cc8ff;
+.intro p {
+  margin-top: 0;
 }
 
 button {
@@ -84,7 +61,7 @@ button {
   color: #0a0c1a;
   border: none;
   padding: 0.5rem 1rem;
-  margin-top: 1rem;
+  margin-top: 0.75rem;
   border-radius: 5px;
   font-size: 1rem;
   cursor: pointer;
@@ -92,6 +69,106 @@ button {
 
 button:hover {
   background-color: #b3d9ff;
+}
+
+.auth-panel h2 {
+  margin-top: 0;
+}
+
+.auth-panel label {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.auth-panel input {
+  width: 100%;
+  padding: 0.35rem;
+  margin-top: 0.25rem;
+  border-radius: 4px;
+  border: 1px solid #333;
+  background-color: #0a0c1a;
+  color: #eaeaea;
+}
+
+.auth-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+#authStatus {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  color: #8cc8ff;
+}
+
+/* Articles panel */
+
+.articles-panel h2 {
+  margin-top: 0;
+}
+
+.status-text {
+  font-size: 0.85rem;
+  color: #8cc8ff;
+  min-height: 1.2em;
+}
+
+#articlesList {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.article-card {
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 0.75rem;
+  background-color: #171c3a;
+}
+
+.article-card h3 {
+  margin: 0 0 0.25rem 0;
+}
+
+.article-meta {
+  font-size: 0.8rem;
+  color: #b0b3d9;
+  margin-bottom: 0.5rem;
+}
+
+.article-content {
+  font-size: 0.95rem;
+}
+
+.article-form {
+  margin-top: 1rem;
+  border-top: 1px solid #333;
+  padding-top: 1rem;
+}
+
+.article-form label {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.article-form input,
+.article-form textarea {
+  width: 100%;
+  padding: 0.35rem;
+  margin-top: 0.25rem;
+  border-radius: 4px;
+  border: 1px solid #333;
+  background-color: #0a0c1a;
+  color: #eaeaea;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 footer {
