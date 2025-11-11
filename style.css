@@ -1,3 +1,61 @@
 body {
-    font-family: serif
+  font-family: system-ui, sans-serif;
+  background-color: #0a0c1a;
+  color: #eaeaea;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  background-color: #1a1f3b;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav {
+  margin-top: 0.5rem;
+}
+
+nav a {
+  color: #8cc8ff;
+  text-decoration: none;
+  margin: 0 10px;
+  font-weight: 600;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+button {
+  background-color: #8cc8ff;
+  color: #0a0c1a;
+  border: none;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #b3d9ff;
+}
+
+footer {
+  background-color: #1a1f3b;
+  text-align: center;
+  padding: 0.75rem;
+  font-size: 0.9rem;
+  color: #aaa;
 }
