@@ -33,8 +33,50 @@ main {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  gap: 3rem;
+  padding: 2rem;
+}
+
+.intro,
+.auth-panel {
+    max-width: 400px;
+    background-color: #141830;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.auth-panel h2 {
+    margin-top: 0;
+}
+
+.auth-panel label {
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.auth-panel input {
+    width: 100%;
+    padding: 0.35rem;
+    margin-top: 0.25rem;
+    border-radius: 4px;
+    border: 1px solid #333;
+    background-color: #0a0c1a;
+    color: #eaeaea;
+}
+
+.auth-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+#authStatus {
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: #8cc8ff;
 }
 
 button {

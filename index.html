@@ -18,17 +18,43 @@
         </header>
 
         <main>
+            <!-- This section is basically just a test section for my first proof of concept -->
             <section class="intro">
                 <p>Welcome to the world of <strong>Starfall</strong>! Explore the gods of the realm!</p>
                 <button id="exploreBtn">Click me to explore</button>
                 <p id="message"></p>
             </section>
+
+            <!-- This section is the login section -->
+             <section class="auth-panel">
+                <h2>Login / Sign Up</h2>
+
+                <label>
+                    Email:
+                    <input type="email" id="authEmail">
+                </label>
+
+                <label>
+                    Password:
+                    <input type="password" id="authPassword">
+                </label>
+
+                <div class="auth-buttons">
+                    <button id="signupBtn">Sign Up</button>
+                    <button id="loginBtn">Log In</button>
+                    <button id="logoutBtn">Log Out</button>                    
+                </div>
+
+                <p id="authStatus"></p>
+             </section>
         </main>
 
         <footer>
             <p>&copy; 2025 Starfall</p>
         </footer>
 
+        <script src="https://unpkg.com/@supabase/supabase-js@2"></script> <!-- Adds Supabase client script -->
+        <script src="auth.js"></script> <!-- The authentication js file for login -->
         <script src="javascript.js"></script> <!-- All JavaScript will be ran off this .js file -->
     
     </body>
