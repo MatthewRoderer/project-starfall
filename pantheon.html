@@ -20,11 +20,26 @@
     </header>
 
     <main>
+      <!-- Pantheon overview card -->
+      <section class="card">
+        <h2>About the Starfall Pantheon</h2>
+        <p id="pantheonStatus" class="status-text">Loading pantheon info...</p>
+
+        <div id="pantheonContent" class="article-content"></div>
+
+        <!-- Shown only to DM -->
+        <div id="pantheonEditWrapper" class="article-form" style="display:none;">
+          <h3>Edit Pantheon Overview (DM only)</h3>
+          <textarea id="pantheonEditText" rows="5"></textarea>
+          <button id="savePantheonBtn">Save Pantheon Overview</button>
+          <p id="pantheonEditStatus" class="status-text"></p>
+        </div>
+      </section>
+
+      <!-- Gods list card -->
       <section class="card">
         <h2>Gods of Starfall</h2>
-        <p class="status-text" id="pantheonStatus">
-          Loading gods...
-        </p>
+        <p class="status-text" id="godsStatus">Loading gods...</p>
         <div id="godsList"></div>
       </section>
     </main>
@@ -33,7 +48,6 @@
       <p>&copy; 2025 Starfall</p>
     </footer>
 
-    <!-- Supabase + auth + page logic -->
     <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
     <script src="auth.js"></script>
     <script src="pantheon.js"></script>
