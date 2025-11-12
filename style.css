@@ -178,3 +178,25 @@ footer {
   font-size: 0.9rem;
   color: #aaa;
 }
+
+.god-symbol-wrapper {
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.god-symbol-img {
+  max-width: 120px;
+  max-height: 120px;
+  border-radius: 50%;
+  border: 2px solid #333;
+  object-fit: cover;
+}
+
+.god-facts {
+  margin: 0.5rem 0 1rem 0;
+  font-size: 0.95rem;
+}
+
+.god-facts p {
+  margin: 0.25rem 0;
+}

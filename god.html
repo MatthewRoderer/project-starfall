@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Starfall God</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Starfall Deity</title>
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
@@ -22,16 +22,67 @@
     <main>
       <section class="card">
         <p><a href="pantheon.html">&larr; Back to Pantheon</a></p>
+
         <h2 id="godTitle">Loading...</h2>
         <p id="godStatus" class="status-text"></p>
 
+        <!-- Symbol -->
+        <div id="godSymbolWrapper" class="god-symbol-wrapper">
+          <img
+            id="godSymbolImg"
+            class="god-symbol-img"
+            alt="Deity symbol"
+            style="display: none"
+        >
+        </div>
+
+        <!-- Meta: type, visibility -->
         <div id="godMeta" class="article-meta"></div>
+
+        <!-- Titles & Domains -->
+        <div class="god-facts">
+          <p><strong>Titles:</strong> <span id="godTitles"></span></p>
+          <p><strong>Domains:</strong> <span id="godDomains"></span></p>
+        </div>
+
+        <hr>
+
+        <!-- Lore -->
+        <h3>Lore</h3>
         <div id="godContent" class="article-content"></div>
 
         <!-- DM-only edit area -->
-        <div id="godEditWrapper" class="article-form" style="display:none;">
-          <h3>Edit God Lore (DM only)</h3>
-          <textarea id="godEditText" rows="6"></textarea>
+        <div id="godEditWrapper" class="article-form" style="display: none">
+          <h3>Edit God Details (DM only)</h3>
+
+          <label>
+            Symbol image URL:
+            <input type="text" id="godSymbolInput">
+          </label>
+
+          <label>
+            Titles:
+            <input
+              type="text"
+              id="godTitlesInput"
+              placeholder="e.g. The Creator, Father of Light and Shadow"
+            >
+          </label>
+
+          <label>
+            Domains:
+            <input
+              type="text"
+              id="godDomainsInput"
+              placeholder="e.g. Creation, Light, Shadow, Cosmos"
+            >
+          </label>
+
+          <label>
+            Lore text:
+            <textarea id="godEditText" rows="6"></textarea>
+          </label>
+
           <button id="saveGodBtn">Save God Lore</button>
           <p id="godEditStatus" class="status-text"></p>
         </div>
