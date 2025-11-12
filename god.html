@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Starfall God</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Starfall Deity</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="pantheon.html">Pantheon</a>
+        <a href="#">Cities</a>
+        <a href="#">Races</a>
+        <a href="#">Religions</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <p><a href="pantheon.html">&larr; Back to Pantheon</a></p>
+        <h2 id="godTitle">Loading...</h2>
+        <p id="godStatus" class="status-text"></p>
+
+        <div id="godMeta" class="article-meta"></div>
+        <div id="godContent" class="article-content"></div>
+
+        <!-- DM-only edit area -->
+        <div id="godEditWrapper" class="article-form" style="display:none;">
+          <h3>Edit God Lore (DM only)</h3>
+          <textarea id="godEditText" rows="6"></textarea>
+          <button id="saveGodBtn">Save God Lore</button>
+          <p id="godEditStatus" class="status-text"></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Starfall</p>
+    </footer>
+
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+    <script src="god.js"></script>
+  </body>
+</html>
