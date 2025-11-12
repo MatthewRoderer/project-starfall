@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Starfall Pantheon</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>☀️ Starfall Pantheon ☀️</h1>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="pantheon.html">Pantheon</a>
+        <a href="#">Cities</a>
+        <a href="#">Races</a>
+        <a href="#">Religions</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="card">
+        <h2>Gods of Starfall</h2>
+        <p class="status-text" id="pantheonStatus">
+          Loading gods...
+        </p>
+        <div id="godsList"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Starfall</p>
+    </footer>
+
+    <!-- Supabase + auth + page logic -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    <script src="auth.js"></script>
+    <script src="pantheon.js"></script>
+  </body>
+</html>
