@@ -13,13 +13,46 @@ const godStatusEl = document.getElementById("godStatus");
 const godMetaEl = document.getElementById("godMeta");
 const godContentEl = document.getElementById("godContent");
 
+const godSymbolWrapper = document.getElementById("godSymbolWrapper");
+const godSymbolImg = document.getElementById("godSymbolImg");
+const godTitlesEl = document.getElementById("godTitles");
+const godDomainsEl = document.getElementById("godDomains");
+
 const godEditWrapper = document.getElementById("godEditWrapper");
 const godEditText = document.getElementById("godEditText");
 const godEditStatus = document.getElementById("godEditStatus");
+const godSymbolInput = document.getElementById("godSymbolInput");
+const godTitlesInput = document.getElementById("godTitlesInput");
+const godDomainsInput = document.getElementById("godDomainsInput");
 
 function getSlugFromQuery() {
   const params = new URLSearchParams(window.location.search);
   return params.get("slug");
+}
+
+// Simple wiki-link renderer: [[slug]] or [[slug|Label]]
+function renderLore(content) {
+  if (!content) return "(no lore has been written yet.)";
+
+  // Escape HTML first
+  let escaped = content
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  // Replace [[slug]] or [[slug|Label]]
+  escaped = escaped.replace(
+    /\[\[([^\|\]]+)(\|([^\]]+))?\]\]/g,
+    (match, slugPart, _rest, labelPart) => {
+      const slug = slugPart.trim().toLowerCase();
+      const label = (labelPart || slugPart).trim();
+      const url = `god.html?slug=${encodeURIComponent(slug)}`;
+      return `<a href="${url}">${label}</a>`;
+    }
+  );
+
+  // Preserve line breaks
+  return escaped.replace(/\n/g, "<br>");
 }
 
 async function loadAuthForGodPage() {
@@ -71,7 +104,9 @@ async function loadGod() {
 
   const { data, error } = await supabaseClient
     .from("articles")
-    .select("id,title,slug,type,content,is_public,created_at")
+    .select(
+      "id,title,slug,type,content,is_public,created_at,symbol_url,titles,domains"
+    )
     .eq("slug", slug)
     .single();
 
@@ -85,17 +120,35 @@ async function loadGod() {
 
   godArticleId = data.id;
 
+  // Title + meta
   godTitleEl.textContent = data.title;
   godStatusEl.textContent = "";
   godMetaEl.textContent = `${data.type} • ${
     data.is_public ? "public" : "private"
   }`;
-  godContentEl.textContent =
-    data.content || "(no lore has been written yet.)";
 
+  // Symbol
+  if (data.symbol_url) {
+    godSymbolImg.src = data.symbol_url;
+    godSymbolImg.style.display = "block";
+  } else {
+    godSymbolImg.style.display = "none";
+  }
+
+  // Titles & domains
+  godTitlesEl.textContent = data.titles || "(none specified)";
+  godDomainsEl.textContent = data.domains || "(none specified)";
+
+  // Lore with internal links
+  godContentEl.innerHTML = renderLore(data.content);
+
+  // If DM, show edit controls
   if (godIsAdmin && godEditWrapper && godEditText) {
     godEditWrapper.style.display = "block";
     godEditText.value = data.content || "";
+    godSymbolInput.value = data.symbol_url || "";
+    godTitlesInput.value = data.titles || "";
+    godDomainsInput.value = data.domains || "";
   } else if (godEditWrapper) {
     godEditWrapper.style.display = "none";
   }
@@ -113,12 +166,21 @@ async function saveGodLore() {
     return;
   }
 
-  const newContent = godEditText.value.trim();
+  const newLore = godEditText.value.trim();
+  const newSymbol = godSymbolInput.value.trim();
+  const newTitles = godTitlesInput.value.trim();
+  const newDomains = godDomainsInput.value.trim();
+
   godEditStatus.textContent = "Saving...";
 
   const { error } = await supabaseClient
     .from("articles")
-    .update({ content: newContent })
+    .update({
+      content: newLore,
+      symbol_url: newSymbol,
+      titles: newTitles,
+      domains: newDomains,
+    })
     .eq("id", godArticleId);
 
   if (error) {
@@ -129,8 +191,18 @@ async function saveGodLore() {
   }
 
   godEditStatus.textContent = "God lore saved.";
-  godContentEl.textContent =
-    newContent || "(no lore has been written yet.)";
+
+  // Update display
+  if (newSymbol) {
+    godSymbolImg.src = newSymbol;
+    godSymbolImg.style.display = "block";
+  } else {
+    godSymbolImg.style.display = "none";
+  }
+
+  godTitlesEl.textContent = newTitles || "(none specified)";
+  godDomainsEl.textContent = newDomains || "(none specified)";
+  godContentEl.innerHTML = renderLore(newLore);
 }
 
 const saveGodBtn = document.getElementById("saveGodBtn");
